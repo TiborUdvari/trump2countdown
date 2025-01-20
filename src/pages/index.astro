@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getInaugurationCountdown } from "../utils/index";
+const countdown = getInaugurationCountdown();
+// "--red": "#D03246",
+//"--white": "#F7F7F7",
+---
+
+<Layout>
+  <main class="bg-[var(--red)] text-[var(--white)] min-w-full min-h-full px-3 md:px-6 pr-12 md:pr-24 lg:pr-12 pt-16 lg:pt-12 pb-3 flex flex-col gap-8" style={{
+    "--red": "#B22234",
+    "--white": "#FFFFFF",
+  }}>
+    <span class="text-2xl md:text-2xl lg:text-2xl">Trump’s final term ends in</span>
+    <span id="countdown" class="text-6xl md:text-[7.5rem] lg:text-[calc(min(12vw,_12vh))] whitespace-pre tabular-nums lining-nums leading-[102%] lg:leading-[98%] tracking-tight lg:tracking-tighter">{countdown}</span>
+    <div class="mt-auto flex flex-row justify-between md:text-2xl lg:text-sm lg:flex-row-reverse">
+      <span>Made for Americans<a class="hidden lg:inline" href="https://www.tiborudvari.com"> by Tibor</a></span>
+      <span class="lg:hidden">20/01/2025</span>
+      <span class="hidden lg:block">Originally published on the 20th of January 2025</span>
+    </div>
+  </main>
+</Layout>
+
+<script>
+import { getInaugurationCountdown } from "../utils/index";
+const countdown = document.getElementById("countdown");
+
+setInterval(() => {
+  countdown!.innerText = getInaugurationCountdown();
+},1000);
+</script>
